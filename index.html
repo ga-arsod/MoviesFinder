@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+       * {
+           font-family: 'Architects Daughter', cursive;;
+       }
+       body {
+        background-image: linear-gradient(
+        200deg,
+        rgba(26, 26, 82, 0.7),
+        rgba(44, 44, 54, 0.5)
+        ),url(https://wallpaperaccess.com/full/3658607.jpg);
+           background-attachment: fixed;
+           background-size: cover;
+       }
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            width: 85%;
+            margin:40px auto; 
+        }
+        #container > div {
+            border-radius: 22px 22px 0 0;
+            height: 350px;
+            color: white;
+            background-color: #292929;
+            padding: 0;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        #container > div > img {
+            margin: 0;
+            display: block;
+            width: 100%;
+            height: 60%;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+        }
+        #container > div > div {
+            display: flex;
+            margin: 10px 10px;
+            justify-content: space-between;
+        }
+        #error {
+            display: inline-block;
+            width: 100%;
+            margin-left: 175%;
+        }
+        h2,h3,h5 {
+            margin: 10px 10px;
+            text-align: center;
+        }
+        h3 {
+            height: 15%;
+        }
+        span {
+            color:orangered;
+        }
+        p {
+            margin: 0;
+            font-size:small;
+        }
+        #searchBox {
+            margin: 40px auto 0 auto;
+            width: 40%;
+            display: flex;
+            justify-content: space-around;
+        }
+        #search {
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            width: 75%;
+            font-size: large;
+            padding-left: 10px;
+        }
+        #sbmt {
+            height: 40px;
+            border: none;
+            background-color: goldenrod;
+            border-radius: 10px;
+            width: 20%;
+            font-size: medium;
+            font-weight: bolder;
+            color: white;
+       }
+       #sbmt:hover {
+           background-color: #8ec038;
+       }
+       #debounce {
+           background-color: white;
+           width: 31%;
+           margin-left: 382px;
+           display: grid;
+           grid-template-columns: 1fr;
+           gap: 10px;
+           position:fixed;
+       }
+       #debounce > div {
+           border:1px solid grey;
+           display: flex;
+           height: 70px;
+       }
+       #debounce > div > #anchor {
+           width: 45%;
+           height: 100%;
+       }
+       #debounce > div > #anchor > img {
+           width: 100%;
+           height: 70px;
+       }
+       #debounce > div > div {
+           width: 50%;
+           margin-left: 5%;
+           margin-top: 5px;
+       }
+       button {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 200px;
+            height: 50px;
+            font-size: 25px;
+            font-weight: 900;
+            background-color: orange;
+            border: none;
+            color: white;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="searchBox">
+        <input oninput="debounce(main,200)" type="text" id="search">
+        <input value="SEARCH" type="submit" id="sbmt" onclick="getMovies()">
+    </div>
+    <div id="debounce"></div>
+    <button onclick="window.location.href='trending.html'">Trending</button>
+    <div id="container"></div>
+</body>
+</html>
+<script src="scripts/index.js"></script>
